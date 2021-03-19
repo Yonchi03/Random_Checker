@@ -41,7 +41,7 @@ class House extends Building {
 
     //Method to print the most spacious house
     protected static void printMostSpacious(){
-        System.out.println("НАЙ-ПРОСТОРНА КЪЩА:");
+        System.out.println("НАЙ-ПРОСТОРНАТА КЪЩА Е:");
         mostSpacious().fancyPrint();
     }
 
