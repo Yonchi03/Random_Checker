@@ -2,44 +2,31 @@ package Project;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.List;
 
 class House extends Building {
 
     //Fields
     private final int numFloors;
     private final String ownerName;
-    private static final ArrayList<House> houseArrayList = new ArrayList<>();
-    private static final LinkedList<House> houseLinkedList = new LinkedList<>();
-
-    //Get method for the list
-    protected static ArrayList<House> getHouseArrayList() { return houseArrayList; }
-    protected static LinkedList<House> getHouseLinkedList() { return houseLinkedList; }
+    private static final List<House> houseList = new ArrayList<>();
 
     //Constructor
-    protected House(float area, String address, int numFloors, String ownerName, boolean link) {
+    protected House(float area, String address, int numFloors, String ownerName) {
         super(area, address);
         this.numFloors = numFloors;
         this.ownerName = ownerName;
-        if (link) {
-            houseLinkedList.add(this); } else {
-            houseArrayList.add(this); }
+        houseList.add(this);
     }
 
-    //Methods to find the most spacious house
-    protected static House mostSpaciousAL(){
-        House max = houseArrayList.get(0);
+    //Get method for the list
+    protected static List<House> getHouseList() { return houseList; }
 
-        for (House i : houseArrayList) {
-            if (i.getArea() / i.numFloors > max.getArea() / max.numFloors) max = i;
-        }
-        return max;
-    }
+    //Method to find the most spacious house
+    private static House mostSpacious(){
+        House max = houseList.get(0);
 
-    protected static House mostSpaciousLL(){
-        House max = houseLinkedList.getFirst();
-
-        for (House i : houseLinkedList) {
+        for (House i : houseList) {
             if (i.getArea() / i.numFloors > max.getArea() / max.numFloors) max = i;
         }
         return max;
@@ -53,14 +40,9 @@ class House extends Building {
     }
 
     //Method to print the most spacious house
-    protected static void printMostSpaciousAL(){
-        System.out.println("НАЙ-ПРОСТОРНАТА КЪЩА Е: (AL)");
-        mostSpaciousAL().fancyPrint();
-    }
-
-    protected static void printMostSpaciousLL(){
-        System.out.println("НАЙ-ПРОСТОРНАТА КЪЩА Е: (LL)");
-        mostSpaciousLL().fancyPrint();
+    protected static void printMostSpacious(){
+        System.out.println("НАЙ-ПРОСТОРНАТА КЪЩА Е:");
+        mostSpacious().fancyPrint();
     }
 
     //Override "toString" so the return value is as we want it
