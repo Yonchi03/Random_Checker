@@ -1,6 +1,6 @@
 package Project;
 
-class Building {
+abstract class Building {
 
     //Fields
     private final float area;
