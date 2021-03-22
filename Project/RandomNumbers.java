@@ -12,27 +12,33 @@ public class RandomNumbers {
     }
 
     public static void main(String[] args) {
-        for (byte i = 1; i < 11; i++) {
+
+        for (byte i = 1; i < 26; i++) {
             list.add(i);
         }
-        for (Byte l : list) {
-            System.out.print(l + " ");
-        }
-        System.out.println();
-
         remover();
     }
 
     private static void remover(){
-        Byte b = getRandom((byte) 1, (byte) 10);
+        Byte b = getRandom((byte) 1, (byte) 25);
         if (list.contains(b)){
-            list.remove(b);
+            printList();
             System.out.println("Got: " + b);
+            list.remove(b);
         }
         if (list.isEmpty()) {
+            System.out.println("List is empty!");
             System.exit(0);
         } else {
             remover();
         }
+    }
+
+    private static void printList (){
+        System.out.print("List: ");
+        for (byte l : list) {
+            System.out.print(l + " ");
+        }
+        System.out.print("\n");
     }
 }
