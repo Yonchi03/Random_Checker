@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class RandomNumbers {
 
     static ArrayList<Byte> list = new ArrayList<>();
-    static byte elementCounter = 20;
+    static byte elementCounter;
 
     public static byte getRandom(byte min, byte max) {
         return (byte) ((Math.random() * ((max - min) + 1)) + min);
@@ -28,14 +28,14 @@ public class RandomNumbers {
 
     @Contract(pure = true)
     private static Boolean isItInArrayList(byte b){
-        byte k = 0;
+        boolean k = false;
         for (Byte i : list) {
             if (i == b) {
-                k++;
+                k = true;
                 elementCounter = (byte) (list.indexOf(i));
             }
         }
-        return k > 0;
+        return k;
     }
 
     private static void remover(){
